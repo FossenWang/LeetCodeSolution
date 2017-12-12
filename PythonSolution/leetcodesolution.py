@@ -54,3 +54,32 @@ class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
+def findMedianSortedArrays(nums1, nums2):
+    '''
+    :type nums1: List[int]
+    :type nums2: List[int]
+    :rtype: float
+    '''
+    merge = nums1 + nums2
+    merge.sort()
+    l = len(merge)
+    if (l % 2) == 0:
+        lm = int(l/2)
+        mid = (merge[lm] + merge[lm-1])/2.0
+    else:
+        lm = int((l-1)/2)
+        mid = float(merge[lm])
+    return mid
+
+def longestPalindrome(s):
+    """
+    :type s: str
+    :rtype: str
+    """
+    for width in range(len(s), 0, -1):
+        for i in range(0, len(s)-width+1):
+            sub = s[i:i+width]
+            rsub = sub[::-1]
+            if sub == rsub:
+                return sub

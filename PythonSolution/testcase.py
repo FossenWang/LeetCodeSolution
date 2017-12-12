@@ -33,3 +33,18 @@ def testAddTwoNumbers():
             result.append(rl.val)
 
         print('expected:',arg['answer'], 'output:', result)
+
+def testFindMedianSortedArrays():
+    arglist = []
+    arglist.append({'nums1':[1, 3], 'nums2':[2], 'answer':2.0 })
+    arglist.append({'nums1':[1, 2], 'nums2':[3, 4], 'answer':2.5 })
+    for arg in arglist:
+        print('expected:',arg['answer'], 'output:', findMedianSortedArrays(arg['nums1'], arg['nums2']))
+
+def testFindMedianSortedArrays():
+    arglist = []
+    arglist.append({'s':'babad', 'answer':'bab'})
+    arglist.append({'s':'cbbd', 'answer':'bb'})
+    for arg in arglist:
+        print('expected:',arg['answer'], 'output:', longestPalindrome(arg['s']))
+
