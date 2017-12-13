@@ -83,3 +83,26 @@ def longestPalindrome(s):
             rsub = sub[::-1]
             if sub == rsub:
                 return sub
+
+def zigzagConvert(s, numRows):
+    """
+    :type s: str
+    :type numRows: int
+    :rtype: str
+    """
+    if numRows == 1 or numRows < len(s):
+        return s
+    zigzag = ['' for i in range(numRows)]
+    i = 0
+    flag = -1
+    for c in s:
+        zigzag[i] += c
+        if 0 < i < (numRows-1):
+            i += flag
+        else:
+            flag *= -1
+            i += flag
+    ans = ''
+    for row in zigzag:
+        ans += row
+    return ans
