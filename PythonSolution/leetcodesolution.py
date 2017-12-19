@@ -127,3 +127,19 @@ def isMatch(s, p):
             memo[i, j] = ans
         return memo[i, j]
     return dp(0, 0)
+
+def maxArea(height):
+    """
+    :type height: List[int]
+    :rtype: int
+    """
+    maxarea = 0
+    l = 0
+    r = len(height)-1
+    while(r > l):
+        maxarea = max(maxarea, min(height[l], height[r]) * (r-l))
+        if height[l] > height[r]:
+            r-=1
+        else:
+            l+=1
+    return maxarea
