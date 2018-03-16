@@ -143,3 +143,49 @@ def maxArea(height):
         else:
             l+=1
     return maxarea
+
+def isValid(s):
+    ':type s: str    :rtype: bool'
+    pairs = {'{':'}', '[':']', '(':')'}
+    stack = []
+    for c in s:
+        if c in pairs:
+            stack.append(c)
+        else:
+            if len(stack)==0:
+                return False
+            elif c in pairs.values():
+                if pairs[stack[-1]] == c:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                return False
+    if len(stack)!=0:return False
+    return True
+
+def mergeTwoLists(l1, l2):
+    ':type l1: ListNode    :type l2: ListNode    :rtype: ListNode'
+    if not l1:return l2
+    if not l2:return l1
+    hl = None
+    if l1.val < l2.val:
+        hl = l1
+        hl.next = mergeTwoLists(l1.next, l2)
+    else:
+        hl = l2
+        hl.next = mergeTwoLists(l1, l2.next)
+    return hl
+
+def removeDuplicates(nums):
+    ':type nums: List[int]    :rtype: int'
+    n = len(nums)
+    if n<2:return n
+    i = 0
+    for j in range(1,n):
+        if nums[i]!=nums[j]:
+            i+=1
+            nums[i] = nums[j]
+    print(nums)
+    return i+1
+
