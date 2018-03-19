@@ -189,3 +189,43 @@ def removeDuplicates(nums):
     print(nums)
     return i+1
 
+def threeSumClosest(nums, target):
+    ":type nums: List[int] :type target: int :rtype: int"
+    nums.sort()
+    ans = sum(nums[:3])
+    ln = len(nums)
+    for n in range(ln-2):
+        l, r = n+1, ln-1
+        while l<r:
+            s = nums[n] + nums[r] + nums[l]
+            d = s-target
+            if d==0:
+                return s
+            elif d>0:
+                r-=1
+                if d<abs(ans-target):
+                    ans = s
+            else:
+                l+=1
+                if -d<abs(ans-target):
+                    ans = s
+    return ans
+
+def letterCombinations(digits):
+    if not digits:return []
+    d={'2':'abc','3':'def','4':'ghi','5':'jkl','6':'mno','7':'pqrs','8':'tuv','9':'wxyz'}
+    if digits[0] not in d:
+        return []
+    ans=[c for c in d[digits[0]]]
+    for n in digits[1:]:
+        l=[]
+        try:
+            for s in ans:
+                for c in d[n]:
+                    l.append(s+c)
+        except KeyError:
+            return []
+        ans=l
+    return ans
+
+
