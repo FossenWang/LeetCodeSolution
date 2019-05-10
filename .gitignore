@@ -1,5 +1,2 @@
-
 *.pyc
-JavaSolution/.classpath
-JavaSolution/.project
-*vscode
+*__pycache__
